@@ -1,0 +1,15 @@
+
+.DS_Store
+*.pyc
+firstvisualcafe/__pycache__/scene.cpython-38.pyc
+*.pyc
+*.png
+*.tex
+*.svg
+*.mp4
+*.log
+*.aux
+firstvisualcafe/media/videos/.DS_Store
+firstvisualcafe/media/.DS_Store
+*.dvi
+firstvisualcafe/media/videos/1080p60.0/.DS_Store
