@@ -1,25 +1,21 @@
 from manim import *
 import numpy as np
-import sys
+from VisualCafe.QuadricSurfaces import *
 
-sys.path.append('../')
-
-class DrawMultiparaSurface(ThreeDScene):
-    def func(self, u, v):
-        return np.array([u, v, u**2 + v**2])
-    
+class Draw(ThreeDScene):
     def construct(self):
-        axes = ThreeDAxes(x_range=[-4,4], x_length=8)
+        axes = ThreeDAxes()
         surface = Surface(
-            lambda u, v: axes.c2p(*self.func(u, v)),
-            u_range=[-PI, PI],
-            v_range=[-PI, PI]
-        )
+            lambda u, v: axes.c2p(*Ellipsoid(u, v)),
+            u_range=[0, 2*PI],
+            v_range=[0, PI]
+            )
         self.set_camera_orientation(theta=50 * DEGREES, phi=75 * DEGREES)
-        self.add(axes, surface)
+        self.add(axes)
+        self.play(Create(surface))
         
 
 if __name__ == '__main__':
 
-    scene = DrawMultiparaSurface()
+    scene = Draw()
     scene.render()
