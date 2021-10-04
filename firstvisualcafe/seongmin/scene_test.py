@@ -1,8 +1,11 @@
 from manim import *
-from firstvisualcafe.VisualCafe.visualcafeintro import *
+from VisualCafe.VGroup.visualcafeintro import *
 
 #랜더링 클래스
 class RenderProject(ThreeDScene):
+    def setup(self):
+        pass
+
     def construct(self):
         self.animation_group()
 
@@ -23,6 +26,8 @@ class RenderProject(ThreeDScene):
         self.square = Square()
         self.triangle = Triangle()
 
+
+
         #애니메이션 실행 메서드
         self.do_animation("1. lag_ratio=0", 1)
 
@@ -30,8 +35,8 @@ class RenderProject(ThreeDScene):
         return np.array([np.cos(u) * np.cos(v), np.cos(u) * np.sin(v), u])
 
     def do_animation(self, name, ratio):
-
-        #self.add(self.intro_object, self.axes, self.surface)
+        pass
+        self.add(self.intro_object, self.axes, self.surface)
 
         animation1 = [
             Create(self.axes, run_time=2),
@@ -43,7 +48,7 @@ class RenderProject(ThreeDScene):
             FadeOut(self.surface, run_time=2),
         ]
 
-        #그래프 그리기
+        # 그래프 그리기
         animation_group1 = AnimationGroup(*animation1, lag_ratio=ratio,)
         #그래프 지우기
         animation_group2 = AnimationGroup(*animation2, lag_ratio=ratio, )

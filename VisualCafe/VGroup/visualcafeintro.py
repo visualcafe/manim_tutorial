@@ -11,7 +11,7 @@ __all__ = ["VisualCafeIntro"]
 class VisualCafeIntro(VGroup):
     def __init__(self, content):
         super().__init__()
-        self.circle = Circle()
+        self.circle = Circle(radius=1.0, color=BLUE_B, fill_opacity=0.1)
         self.dodecahedron = Dodecahedron()
         self.content = content
 
