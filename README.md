@@ -13,13 +13,13 @@ VisualCafe 패키지는 firstvisualcafe 하위에 위치했습니다.
 이제는 VisualCafe 패키지 위치를 가장 상위 디렉토리에 위치시켰습니다. 
 
 현재 디렉터리 구조
--manim_tutorial
-  -VisualCafe           <- 여기로 패키지 위치 옮김
-  -tutorial_notebook
-  -firstvisualcafe
-    -byoungho
-    -jinseok
-    -seongmin
+- manim_tutorial
+  - VisualCafe           <- 여기로 패키지 위치 옮김
+  - tutorial_notebook
+  - firstvisualcafe
+    - byoungho
+    - jinseok
+    - seongmin
 
 
 네이밍 규칙 
