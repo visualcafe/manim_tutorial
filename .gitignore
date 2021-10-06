@@ -13,3 +13,9 @@ firstvisualcafe/media/videos/.DS_Store
 firstvisualcafe/media/.DS_Store
 *.dvi
 firstvisualcafe/media/videos/1080p60.0/.DS_Store
+
+### JupyterNotebooks ###
+# gitignore template for Jupyter Notebooks
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+tutorial_notebook/media/
