@@ -6,18 +6,17 @@ import VisualCafe.QuadricSurfaces as vcq
 #랜더링 클래스
 class WheelParadox(VisualCafeScene3D):
     def visualcafe_construct(self):
-        #super.intro_object = VisualCafeIntro(Text("바퀴의 역설"))
-        self.axes = ThreeDAxes(x_range=[-4, 4], x_length=8)
-        self.surface = Surface(
-            lambda u, v: self.axes.c2p(*vcq.Ellipsoid(u, v)),
-            u_range=[-PI, PI],
-            v_range=[0, TAU]
-        )
+        self.circleBig = Circle()
+        tracker = ValueTracker(3)
 
-        # self.set_to_default_angled_camera_orientation()
-        self.set_camera_orientation(theta=70 * DEGREES, phi=75 * DEGREES)
-        self.create_and_fadeout2(2, self.axes, self.surface)
-
+        self.circleBig = Circle(radius=3)
+        self.add(self.circleBig)
+        for i in range(3, 15):
+            ss = RegularPolygon(17 - i, radius=3, fill_opacity=0, fill_color=RED)
+            self.add(ss)
+            self.wait(0.2)
+            self.remove(ss)
+        self.wait(2)
 #실행부분
 if __name__ == '__main__':
 
