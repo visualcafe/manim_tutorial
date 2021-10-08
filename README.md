@@ -36,7 +36,7 @@ VisualCafe 패키지는 firstvisualcafe 하위에 위치했습니다.
 ```python
 from manim import *
 
-def 영상이름(Scene):
+class 영상이름(Scene):
   construct(self):
     pass
 ```    
@@ -46,7 +46,7 @@ def 영상이름(Scene):
 from manim import *
 from VisualCafe.scene.visualcafescene2d import *
 
-def 영상이름(VisualCafeScene2D):
+class 영상이름(VisualCafeScene2D):
   def visualcafe_construct(self):
     pass
 ```
