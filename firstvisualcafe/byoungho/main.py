@@ -2,12 +2,11 @@ import sys
 sys.path.append('../../')
 
 from manim import *
-from VisualCafe.scene.visualcafescene2d import *
 
-class Tute(VisualCafeScene2D):
-  def visualcafe_construct(self):
-      circle = Circle()
-      self.add(circle)
+class Tute(ThreeDScene):
+  def construct(self):
+      axes = 
+      
 
 if __name__ == '__main__':
 
