@@ -19,3 +19,10 @@ def EllipticParaboloid(u, v, a=1, b=1, c=1):
     return np.array([a * np.sqrt(u) * np.cos(v),
                      b * np.sqrt(u) * np.sin(v),
                      c * u])
+
+def HyperboloidOneSheet(u, v, a=1, b=1, c=1):
+    # x**2/a**2 + y**2/b**2 - z**2/c**2 = 1
+    
+    return np.array([a * np.sqrt(1+v**2) * sin(u),
+                     b * np.sqrt(1+v**2) * cos(u),
+                     c * v])
