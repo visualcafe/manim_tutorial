@@ -1,7 +1,10 @@
 from manim import *
 
-class WheelParadoxFirst(Scene):
+class WheelParadox(Scene):
     def construct(self):
+        
+        # First Scene
+        
         e = ValueTracker(0)
 
         dot = always_redraw(lambda: Dot().shift(RIGHT*(-PI+e.get_value())))
@@ -22,9 +25,13 @@ class WheelParadoxFirst(Scene):
         equals_2 = MathTex(r"=").shift(UP+RIGHT*PI*5/8)
         ques_m = MathTex(r"?", font_size=144).shift(UP*2.5+RIGHT*PI*7/4)
         
+        caption1 = Tex("Let's roll two circles which have the same center.").to_edge(DOWN, buff=1)
+        
         self.play(LaggedStart(Create(circle1), Create(circle2), Create(dot), Create(radius)))
         self.wait(0.5)
+        self.play(Write(caption1))
         self.play(FadeIn(dot1, dot2, line1, line2))
+        self.play(FadeOut(caption1))
         self.wait(0.5)
         self.play(e.animate.set_value(2*PI), run_time=4)
         self.wait(0.5)
@@ -51,8 +58,50 @@ class WheelParadoxFirst(Scene):
         self.play(FadeOut(line1_, line2_, circle1_, circle2_, equals_1, equals_2, ques_m))
         self.wait()
         
+        self.clear()
+        
+        
+        # Second Scene
 
-if __name__ == '__main__':
+        n = 5
+        r = 1
+        ang = PI*(n-2)/n
+        l = 2 * r * np.cos(ang/2)
+        wheels = 1
+        
+        poly = Polygon(
+            )
+        
+        
+        
+        
+        
+        poly = Polygon(n, radius=r).shift(LEFT*(l*n/2))
+        trace_dot = Dot(poly.get_vertices
+        poly_s = VGroup(poly, trace_dot)
+        trace = TracedPath(trace_dot.get_center)
+        
+        self.play(Create(poly_s))
+        self.add(trace)
+        self.wait()
+        
+        for i in range(n*wheels):
+            fixedpoint = Dot(poly_s.get_bottom()).shift(RIGHT*l/2)
+            self.play(Rotate(
+                poly_s, about_point=fixedpoint.get_center(), angle=ang-PI, rate_func=linear
+                ))
+        
+        self.wait()
+        
+        
+        # Third Scene
+        poly = RegularPolygon()
+        
 
-    scene = WheelParadoxFirst()
-    scene.render()
+
+
+
+# if __name__ == '__main__':
+
+#     scene = WheelParadoxFirst()
+#     scene.render()
