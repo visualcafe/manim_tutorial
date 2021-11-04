@@ -89,43 +89,64 @@ from manim import *
 #         self.play(Create(dot1), Create(dot2), Create(dot3))
 #         self.play(Rotate(triangle_redraw, angle=-2*(PI/3)))
 #         # self.play(e.animate.set_value(2*PI), run_time=4)
-class Roll(Scene):
+# class Roll(Scene):
 
-    def polygon_roll_function(self, n: int, radius: int, times: int):
-            ang = PI*(n-2)/n
-            length = 2 * radius * np.cos(ang/2)
+#     def polygon_roll_function(self, n: int, radius: int, times: int):
+#             ang = PI*(n-2)/n
+#             length = 2 * radius * np.cos(ang/2)
             
-            poly = RegularPolygon(n, radius=radius).shift(LEFT*2)
-            poly2 = RegularPolygon(n, radius=radius).shift(LEFT*2)
+#             poly = RegularPolygon(n, radius=radius).shift(LEFT*2)
+#             poly2 = RegularPolygon(n, radius=radius).shift(LEFT*2)
             
             
 
-            rotate_animation = []
-            fixedpoints = []
-            polys = []
-            for i in range(times):
-                fixedpoint = Dot(poly.get_bottom()).shift(RIGHT*length/2)
-                polys.append(poly)
-                fixedpoints.append(fixedpoint)
-                polys.append(poly.rotate(about_point=fixedpoints[i].get_center(), angle=ang-PI))
-                # self.play(Rotate(poly, about_point=fixedpoints[i].get_center(), angle=ang-PI, rate_func=linear))
+#             rotate_animation = []
+#             fixedpoints = []
+#             polys = []
+#             for i in range(times):
+#                 fixedpoint = Dot(poly.get_bottom()).shift(RIGHT*length/2)
+#                 polys.append(poly)
+#                 fixedpoints.append(fixedpoint)
+#                 polys.append(poly.rotate(about_point=fixedpoints[i].get_center(), angle=ang-PI))
+#                 # self.play(Rotate(poly, about_point=fixedpoints[i].get_center(), angle=ang-PI, rate_func=linear))
             
-            # rotate_animation.append(Rotate(polys[i], about_point=fixedpoints[i].get_center(), angle=ang-PI, rate_func=linear))
+#             # rotate_animation.append(Rotate(polys[i], about_point=fixedpoints[i].get_center(), angle=ang-PI, rate_func=linear))
             
-            self.play(Succession(*rotate_animation))
+#             self.play(Succession(*rotate_animation))
 
+    # def construct(self):
+    #     n = 5
+    #     r = 1
+    #     # self.polygon_roll_function(n,r, 5)
+
+    #     self.polygon_roll_function(n, r, n)
+    #     self.wait()
+class UpdaterTest(Scene):
     def construct(self):
-        n = 5
-        r = 1
-        # self.polygon_roll_function(n,r, 5)
+        circleBig = Circle(
+            radius=1.0, stroke_color=RED, stroke_opacity=1.0, fill_color=RED, fill_opacity=0.5
+        ).shift(
+            RIGHT * (-PI)
+        )
 
-        self.polygon_roll_function(n, r, n)
-        self.wait()
+        circleSmall = Circle(
+            radius=0.5, stroke_color=YELLOW, stroke_opacity=1.0, fill_color=YELLOW, fill_opacity=0.5
+        ).shift(
+            RIGHT * (-PI)
+        )
 
+        centerDot = Dot(
+            color = BLUE
+        ).shift(
+            RIGHT * (-PI)
+        )
+        circleBig.add_updater(lambda x: x.move_to(centerDot.get_center()))
+        self.add(circleBig, circleSmall, centerDot)
+        self.play(centerDot.animate.shift(RIGHT*8))
         
 
 #실행부분
 if __name__ == '__main__':
 
-    scene = Roll()
+    scene = UpdaterTest()
     scene.render()
