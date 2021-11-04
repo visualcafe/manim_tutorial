@@ -96,22 +96,30 @@ class Roll(Scene):
             length = 2 * radius * np.cos(ang/2)
             
             poly = RegularPolygon(n, radius=radius).shift(LEFT*2)
+            poly2 = RegularPolygon(n, radius=radius).shift(LEFT*2)
+            
+            
 
             rotate_animation = []
             fixedpoints = []
-            for i in range(n):
+            polys = []
+            for i in range(times):
                 fixedpoint = Dot(poly.get_bottom()).shift(RIGHT*length/2)
+                polys.append(poly)
                 fixedpoints.append(fixedpoint)
-                Rotate(poly, about_point=fixedpoint.get_center(), angle=ang-PI, rate_func=linear)
-                rotate_animation.append(Rotate(poly, about_point=fixedpoints[i].get_center(), angle=ang-PI, rate_func=linear))
+                polys.append(poly.rotate(about_point=fixedpoints[i].get_center(), angle=ang-PI))
+                # self.play(Rotate(poly, about_point=fixedpoints[i].get_center(), angle=ang-PI, rate_func=linear))
             
-            return Succession(*rotate_animation)
+            # rotate_animation.append(Rotate(polys[i], about_point=fixedpoints[i].get_center(), angle=ang-PI, rate_func=linear))
+            
+            self.play(Succession(*rotate_animation))
 
     def construct(self):
         n = 5
         r = 1
+        # self.polygon_roll_function(n,r, 5)
 
-        self.play(self.polygon_roll_function(n, r, n))
+        self.polygon_roll_function(n, r, n)
         self.wait()
 
         
